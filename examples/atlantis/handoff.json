@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "project_id": "atlantis-demo",
+  "revision": "r1",
+  "status": "planned",
+  "documents": {
+    "world": "01_world.md",
+    "story": "02_story.md",
+    "atlas": "03_design_atlas.md"
+  },
+  "entities": [
+    {
+      "id": "GLOBAL-TRAVELLER",
+      "kind": "character",
+      "scope": "global",
+      "version": "pending",
+      "locked_features": [
+        "由使用者提供既有母图后锁定"
+      ],
+      "design_files": [],
+      "status": "planned"
+    },
+    {
+      "id": "ATL-LOC-01",
+      "kind": "location",
+      "scope": "civilization",
+      "version": "v1",
+      "locked_features": [
+        "西入口、北阀门、东通道"
+      ],
+      "design_files": [],
+      "status": "planned"
+    },
+    {
+      "id": "ATL-PROP-01",
+      "kind": "prop",
+      "scope": "civilization",
+      "version": "v1",
+      "locked_features": [
+        "三联结构、背面反向磨损"
+      ],
+      "design_files": [],
+      "status": "planned"
+    }
+  ],
+  "segments": [
+    {
+      "id": "SEG-01",
+      "duration_s": 18,
+      "story_anchor": "SEG-01 旧引水闸",
+      "shots": [
+        {
+          "id": "SH-01",
+          "start_s": 0,
+          "end_s": 5,
+          "entity_ids": [
+            "GLOBAL-TRAVELLER",
+            "ATL-LOC-01",
+            "ATL-PROP-01"
+          ],
+          "keyframe_ids": [
+            "KF-01"
+          ],
+          "action": "西入口观察",
+          "start_state": "西入口持机",
+          "end_state": "阀门已定位",
+          "pov": "Traveller手持",
+          "era": "当前"
+        },
+        {
+          "id": "SH-02",
+          "start_s": 5,
+          "end_s": 13,
+          "entity_ids": [
+            "GLOBAL-TRAVELLER",
+            "ATL-LOC-01",
+            "ATL-PROP-01"
+          ],
+          "keyframe_ids": [
+            "KF-02"
+          ],
+          "action": "检查反向磨损",
+          "start_state": "阀门已定位",
+          "end_state": "手停在磨损处",
+          "pov": "Traveller手持",
+          "era": "当前"
+        },
+        {
+          "id": "SH-03",
+          "start_s": 13,
+          "end_s": 18,
+          "entity_ids": [
+            "GLOBAL-TRAVELLER",
+            "ATL-LOC-01",
+            "ATL-PROP-01"
+          ],
+          "keyframe_ids": [
+            "KF-03"
+          ],
+          "action": "转向东通道",
+          "start_state": "手停在磨损处",
+          "end_state": "朝东通道稳定",
+          "pov": "Traveller手持",
+          "era": "当前"
+        }
+      ]
+    }
+  ]
+}

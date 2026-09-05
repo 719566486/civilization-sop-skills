@@ -1,0 +1,92 @@
+{
+  "template_version": "1.1",
+  "project_id": "atl",
+  "revision": "r1",
+  "segment_id": "SEG-001",
+  "target_duration_s": 18,
+  "stage": 3,
+  "status": "planned",
+  "note": "这是可填模板。null路径不代表资产已生成；按实际出镜与声音需求调整数量和required。",
+  "assets": [
+    {
+      "type": "upstream_script_and_atlas",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": true,
+      "status": "planned"
+    },
+    {
+      "type": "passed_keyframes",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": true,
+      "status": "planned"
+    },
+    {
+      "type": "entity_design_refs",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": true,
+      "status": "planned"
+    },
+    {
+      "type": "generation_plan",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "raw_clips",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "final_video",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "audio_if_requested",
+      "required": false,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "subtitles_if_requested",
+      "required": false,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "video_qa",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "video_manifest",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    }
+  ]
+}

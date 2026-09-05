@@ -1,0 +1,84 @@
+{
+  "template_version": "1.1",
+  "project_id": "atl",
+  "revision": "r1",
+  "segment_id": "SEG-001",
+  "target_duration_s": 18,
+  "stage": 1,
+  "status": "planned",
+  "note": "这是可填模板。null路径不代表资产已生成；按实际出镜与声音需求调整数量和required。",
+  "assets": [
+    {
+      "type": "node_card",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "world_rule_refs",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "shot_table",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "traveller_design",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": true,
+      "status": "planned"
+    },
+    {
+      "type": "craft_design_if_present",
+      "required": false,
+      "asset_ids": [],
+      "files": [],
+      "reuse": true,
+      "status": "planned"
+    },
+    {
+      "type": "local_character_designs",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "prop_designs",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "location_designs",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "state_table",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    }
+  ]
+}

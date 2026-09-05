@@ -1,0 +1,92 @@
+{
+  "template_version": "1.1",
+  "project_id": "atl",
+  "revision": "r1",
+  "segment_id": "SEG-001",
+  "target_duration_s": 18,
+  "stage": 2,
+  "status": "planned",
+  "note": "这是可填模板。null路径不代表资产已生成；按实际出镜与声音需求调整数量和required。",
+  "assets": [
+    {
+      "type": "upstream_package",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": true,
+      "status": "planned"
+    },
+    {
+      "type": "entity_design_refs",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": true,
+      "status": "planned"
+    },
+    {
+      "type": "establishing_frame",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "action_frame",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "evidence_or_end_frame",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "prompt_and_reference_maps",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "generation_receipts",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "contact_sheet",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "image_qa",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    },
+    {
+      "type": "image_manifest",
+      "required": true,
+      "asset_ids": [],
+      "files": [],
+      "reuse": false,
+      "status": "planned"
+    }
+  ]
+}

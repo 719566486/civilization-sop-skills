@@ -1,0 +1,6 @@
+interface:
+  display_name: "SOP 1 · 文明创作总设定"
+  short_description: "把文明想法转为可复用设定、清晰资产交接与可执行制作流程的第1阶段"
+  default_prompt: "使用 $civilization-blueprint 完成本阶段，读取项目现有资料并输出可交接成果。"
+policy:
+  allow_implicit_invocation: true
