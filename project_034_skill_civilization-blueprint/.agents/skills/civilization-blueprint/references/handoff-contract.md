@@ -52,3 +52,9 @@ SOP1需三文档完整、相关实体设定图均passed、逐镜可执行；SOP2
 同用途修改递增该资产revision，历史文件不能覆盖，已确认运行时路径和名称不变。文稿因果变化更新story_snapshot；依赖旧内容的下游标stale并重验，不把文稿版本当资产revision。确需新增资产先交开发确认。
 
 2.0不静默接受旧1.0清单。旧数据先参考迁移对照，保留原件，只迁移制作表字段，不自动分配正式ID或重命名用户现有资源。
+
+## SOP1叙事扩展：无人前文明
+
+执行本技能还必须遵守 [遗迹与证据契约](ruins-evidence.md) 的ruins_1.0字段。handoff携带无人前提、evidence_plan.json、author_only_files与player_asset_refs；每镜有evidence_refs及player_visible_content，每节点有三层知识与未解疑点，每实体明确present_role和audience。
+
+SOP2/3读取本包时，只把player_transmission允许的遗迹／物件／历史碎片内容制作成玩家传回资产；author_only母图可用于风格/结构约束但不能直接当剧情画面。不得加入当地居民，也不得从作者完整历史中擅自补上答案旁白。旧2.0校验器的结构通过不覆盖本扩展语义，需单独QA。

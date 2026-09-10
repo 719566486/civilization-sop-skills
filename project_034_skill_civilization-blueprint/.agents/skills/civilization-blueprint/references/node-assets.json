@@ -50,12 +50,13 @@
       "production_refs": []
     },
     {
-      "type": "local_character_designs",
-      "required": true,
+      "type": "historical_depictions_if_needed",
+      "required": false,
       "files": [],
       "reuse": false,
       "status": "planned",
-      "production_refs": []
+      "production_refs": [],
+      "note": "仅证据中的壁画/记录形象；无当下居民"
     },
     {
       "type": "prop_designs",
@@ -75,6 +76,22 @@
     },
     {
       "type": "state_table",
+      "required": true,
+      "files": [],
+      "reuse": false,
+      "status": "planned",
+      "production_refs": []
+    },
+    {
+      "type": "evidence_plan",
+      "required": true,
+      "files": [],
+      "reuse": false,
+      "status": "planned",
+      "production_refs": []
+    },
+    {
+      "type": "knowledge_and_spoiler_review",
       "required": true,
       "files": [],
       "reuse": false,
@@ -131,6 +148,24 @@
       "confirmation": null
     },
     "status": "planned",
-    "qa": {}
-  }
+    "qa": {},
+    "present_role": "relic",
+    "audience": "author_only",
+    "evidence_refs": []
+  },
+  "narrative_contract_version": "ruins_1.0",
+  "world_state": "abandoned_precursor_ruins",
+  "present_civilization_population": 0,
+  "player_reconstructs_history": true,
+  "author_truth": "",
+  "traveller_knowledge_before": [],
+  "traveller_observations": [],
+  "player_received_asset_refs": [],
+  "supported_inferences": [],
+  "unresolved_questions": [],
+  "evidence_refs": [],
+  "spoiler_constraints": [
+    "不得输出完整复原与作者答案",
+    "不得安排当下文明居民"
+  ]
 }

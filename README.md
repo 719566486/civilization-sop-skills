@@ -1,5 +1,7 @@
 # Civilization SOP Skills · 文明资产制作三部曲
 
+> **SOP1前提更新 1.4**：所有前文明已废弃、无居民；完整世界观是内部依据，玩家从Traveller传回的遗迹碎片自行拼凑历史。[更新说明](docs/ruins_premise.md)。
+
 > **命名规范更新（2026-09-10）**：已对齐《美术资产命名与交付规范》V1。正式美术文件采用snake_case，源文件/历史交付用rNNN，运行时文件保持稳定名称。开发负责Asset ID、Asset Key、最终运行时路径及Manifest。交接契约升级为2.0；旧数据请先迁移。
 
 [命名与交付规则](docs/art_naming.md) · [新旧规则对照](docs/naming_migration.md)

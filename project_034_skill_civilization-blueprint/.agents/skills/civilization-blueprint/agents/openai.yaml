@@ -1,6 +1,6 @@
 interface:
   display_name: "SOP 1 · 文明创作总设定"
-  short_description: "把文明想法转为可复用设定、清晰资产交接与可执行制作流程的第1阶段"
-  default_prompt: "使用 $civilization-blueprint 完成本阶段，读取项目现有资料并输出可交接成果。"
+  short_description: "创作无人前文明遗迹、探索脚本和实图，让玩家从传回资产自行拼凑历史"
+  default_prompt: "使用 $civilization-blueprint 创作已废弃且无居民的前文明：完整历史只作内部依据，让玩家通过Traveller传回的遗迹资产自行拼凑文明。"
 policy:
   allow_implicit_invocation: true
