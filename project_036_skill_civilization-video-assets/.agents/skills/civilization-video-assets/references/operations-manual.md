@@ -3,19 +3,19 @@
 ![本阶段图文流程](illustrated.png)
 
 
-手册版本v1.1。以下参数区分制作目标与平台请求；不会把某次历史接口上限当永久能力。
+手册版本1.3。以下参数区分制作目标与平台请求；不会把某次历史接口上限当永久能力。
 
 ## 一、逐步操作：工具、输入、输出、参数与放行
 
 | 步骤 | 使用工具 | 输入格式 | 操作与参数/模板 | 输出格式 | 合格标准 |
 |---|---|---|---|---|---|
-| 1 接收素材 | Codex文件读取、JSON校验、图片查看 | 剧本/图册MD、handoff/image_manifest JSON、真实PNG/JPG | 检查版本、passed状态、必要图像ID | `qa/video-input-check.md` | 所需关键帧和母图可读且通过；无stale |
+| 1 接收素材 | Codex文件读取、JSON校验、图片查看 | 剧本/图册MD、handoff/image_delivery JSON、真实PNG/JPG | 检查版本、passed状态、必要图像ID | `qa/video_input_check.md` | 所需关键帧和母图可读且通过；无stale |
 | 2 核验环境和权限 | Kling MCP who_am_i；Flova version/auth status；所选路线账户项目只读查询；FFmpeg/HyperFrames帮助 | 用户路线、目标时长/画幅、预算授权 | 分别记录发现/连接/登录/能力；实际生成只需一条后端 | `qa/preflight.md` | 接口能力、材料上传、后期与授权支持本次具体任务 |
 | 3 编译任务 | Codex镜头拆解、平台实时schema/CLI帮助 | 逐镜脚本、图片、参考映射 | 模板V/F；生成时长与最终时长分开；填实际合法参数 | `video_plan.json`、逐任务prompt TXT、请求JSON | 时间表可执行；长于平台上限的目标已拆片；报价条件明确 |
 | 4 上传与生成 | Kling file_upload＋image_to_video；或Flova上传/聚合run（按当前帮助） | 兼容图片副本、脚本、准确映射、授权任务 | 选择已确认模型；保存任务ID；按现有任务等待 | 原始MP4、请求/回执JSON、费用记录 | 真实媒体资源成功；不能仅凭文本completed判定出片 |
-| 5 剪辑与声音 | FFmpeg；或HyperFrames入口＋general-video/core/cli；需要声音时media-use/audio | 原片MP4、可选音频WAV/MP3、实词字幕SRT | 正常速度按脚本拼接；按需混音/字幕/结尾；不得靠黑屏凑秒 | `videos/*_final_vNNN.mp4`、可选SRT | 最终15–20秒；动作、声音完整；无多余硬切 |
-| 6 文件与视听验收 | ffprobe、FFmpeg全解码；视频查看/逐帧检查；音频播放；有字幕时ASR辅助 | 最终MP4及脚本/母图 | 检查真实时长/尺寸；观看全段及接点；试听全段 | `qa/video-review.md`、测量JSON/日志 | 下列硬性门槛全通过；未观看/试听不能宣称全通过 |
-| 7 返修与交接 | 原后端局部再生成或已授权编辑；SHA256、JSON工具 | 问题定位、原始素材、预算剩余 | 按失败表选择重下载/剪辑/重生成；保留原片 | video_manifest JSON、MP4、可选字幕与来源清单 | 节点ID完整覆盖；来源与实测参数可追溯 |
+| 5 剪辑与声音 | FFmpeg；或HyperFrames入口＋general-video/core/cli；需要声音时media-use/audio | 原片MP4、可选音频WAV/MP3、实词字幕SRT | 正常速度按脚本拼接；按需混音/字幕/结尾；不得靠黑屏凑秒 | `history/ch01_signal03_r001.mp4`、可选SRT | 最终15–20秒；动作、声音完整；无多余硬切 |
+| 6 文件与视听验收 | ffprobe、FFmpeg全解码；视频查看/逐帧检查；音频播放；有字幕时ASR辅助 | 最终MP4及脚本/母图 | 检查真实时长/尺寸；观看全段及接点；试听全段 | `qa/video_review.md`、测量JSON/日志 | 下列硬性门槛全通过；未观看/试听不能宣称全通过 |
+| 7 返修与交接 | 原后端局部再生成或已授权编辑；SHA256、JSON工具 | 问题定位、原始素材、预算剩余 | 按失败表选择重下载/剪辑/重生成；保留原片 | video_delivery JSON、MP4、可选字幕与来源清单 | 节点ID完整覆盖；来源与实测参数可追溯 |
 
 实际Kling工具前缀随宿主变化，使用当前发现的同名能力。Flova具体上传/运行flags先查帮助；加载可用flova技能的运行生命周期，禁止拼造CLI参数。
 
@@ -24,7 +24,7 @@
 清单按 [交接契约](handoff-contract.md)。以下是任务规划JSON，不是供应商原始API请求：
 
 ```json
-{"segment_id":"SEG-001","target_final_seconds":18,"provider":"kling-or-flova","model":"resolve-from-current-capabilities","generated_parts_seconds":[10,8],"aspect_ratio":"16:9","target_width":1920,"target_height":1080,"fps_policy":"preserve_or_explicitly_convert","native_audio":false,"reference_files":[],"spoken_text":"","subtitle_mode":"none","budget":{"estimate":null,"authorized_budget":null,"actual_charge":null},"status":"planned"}
+{"node_ref":"node_01","target_final_seconds":18,"provider":"kling-or-flova","model":"resolve-from-current-capabilities","generated_parts_seconds":[10,8],"aspect_ratio":"16:9","target_width":1920,"target_height":1080,"fps_policy":"preserve_or_explicitly_convert","native_audio":false,"reference_files":[],"spoken_text":"","subtitle_mode":"none","budget":{"estimate":null,"authorized_budget":null,"actual_charge":null},"status":"planned"}
 ```
 
 这里10+8只是拆分示意，不代表任何平台必然支持这两个长度；也不是默认要求生成两段。能用单次15秒讲完整就无需拆片。
@@ -56,7 +56,7 @@ ffmpeg -v error -i "INPUT.mp4" -map 0:v:0 -map 0:a? -f null -
 ### V 视频动作任务
 
 ```text
-制作{segment_id}，最终目标{target_seconds}秒；本次生成部分{part_id}长{supported_seconds}秒。
+制作{node_ref}，最终目标{target_seconds}秒；本次生成部分{part_id}长{supported_seconds}秒。
 参考映射：{reference_index_to_entity_and_frame}。保持{locked_geometry_and_identity}。
 时代{era}，摄影机由{camera_owner}持有；开始状态{start_state}。
 {t0}-{t1}秒：{camera_motion}，主体{action1}，环境{response1}。
@@ -69,7 +69,7 @@ ffmpeg -v error -i "INPUT.mp4" -map 0:v:0 -map 0:a? -f null -
 ### F Flova有边界任务
 
 ```text
-使用本项目已上传并确认可读的脚本、实体设定图和{segment_id}关键帧。
+使用本项目已上传并确认可读的脚本、实体设定图和{node_ref}关键帧。
 仅制作这个节点，交付{15_to_20}秒视频；保持{invariants}，执行{shot_schedule}。
 使用{confirmed_model_or_route}，声音按{audio_plan}，不得生成{out_of_scope_media}。
 本次授权范围为{existing_budget_and_retry_scope}。先按已明确的能力和费用条件执行，不扩展节点数量。
@@ -79,7 +79,7 @@ ffmpeg -v error -i "INPUT.mp4" -map 0:v:0 -map 0:a? -f null -
 ### R 动态返修
 
 ```text
-{segment_id}的{time_range}出现{observed_failure}。
+{node_ref}的{time_range}出现{observed_failure}。
 保留{passed_shots_and_audio}，从{approved_source_frame}修正{one_action_or_geometry}。
 新末态必须接上{next_start_state}，保持{screen_direction_and_prop_state}。
 仅修该段，费用和重试仍受{authorization_scope}约束。
@@ -105,20 +105,29 @@ ffmpeg -v error -i "INPUT.mp4" -map 0:v:0 -map 0:a? -f null -
 | BGM太大/字幕遮证据 | 试听与画面检查不通过 | 仅改混音/字幕位置字号，尽量保留合格画面 | 音轨、字幕与最终解码 |
 ## 六、文件命名与版本规则
 
-- project_id 使用短英文文明码，如 `atl`；故事节点 `SEG-001`，镜头 `SH-001-01`，关键帧 `KF-001-01-A`。ID一经分配不因返修改变，删除的ID不复用。
-- 全局实体 `GLOBAL-TRAVELLER` / `GLOBAL-CRAFT`；文明实体 `ATL-CHAR-001` / `ATL-PROP-001` / `ATL-LOC-001`。只在实际出镜或参与因果时纳入节点资产。
-- 文件模式：`{project_id}_{entity_or_segment_id}_{role}_v{NNN}.{ext}`。例如 `atl_ATL-LOC-001_layout_v001.png`、`atl_SEG-001_SH-001-01_start_v002.png`、`atl_SEG-001_final_v003.mp4`。使用ASCII文件名便于跨平台命令，中文解释写在清单中。
-- 世界/脚本/图册及清单保留契约固定入口名，例如 `01_world.md`、`handoff.json`；每次正式修订前将旧文件归入 `revisions/r001/`，新入口指向同一份最新有效内容。文档首部写 project_id、revision、updated_at、status、变更说明。
-- `revision` 是整套制作的契约修订号（示例 `r1`→`r2`）；`v001` 是某项资产的迭代号。只修某帧构图但不改变世界/身份/剧情时提升文件v号并更新清单，不必重写全部世界设定。改变人物身份、地点拓扑或剧情事实时提升revision，并逐项标记受影响下游 `stale`。
-- 保留原始文件，失败版登记failed原因，合格版本登记passed与SHA256。不要使用“最终版2_最终确认版”等模糊命名，不以最新修改时间自动选取版本。
-- 所有引用是production根目录相对路径。日期采用ISO格式，文本UTF-8。缓存、下载、中间文件与交付均服从使用者指定根目录；外部工具若无法指定落盘位置，先明确限制，不静默违反路径规则。
-- 开源仓库版本与制作revision分开：本次手册为v1.1，不能把仓库v1.1误当某文明资产revision。
+本阶段按 [美术命名与交付规则](art_naming.md) 执行，覆盖此前的组合编号文件名与v号约定。
+
+| 内容 | 本阶段执行规则 |
+|---|---|
+| 正式文件/目录 | 小写ASCII＋数字＋下划线；snake_case；小写扩展名 |
+| 文件结构 | `<asset_name>[_<variant>]_<role>[_rNNN].<ext>`；无意义的main及不存在的variant省略 |
+| 历史/源文件 | r001起，三位递增；如`history/ch01_signal03_r002.mp4`；不覆盖旧历史 |
+| 运行时文件 | 如`runtime/ch01_signal03.mp4`，通常不带修订号；名称/路径由开发确认 |
+| 设定/关键帧 | 如`reference/traveller_preview_r001.png`；仅制作参考，不自动进入运行时 |
+| 角色词 | 使用source/preview/thumbnail/albedo/normal等已有词；新的角色先与开发确认 |
+| 开发登记 | Asset ID、Asset Key、Runtime Path及Manifest由开发管理，未知为null/pending |
+| 制作清单 | handoff.json、image_delivery.json、video_delivery.json；不是开发Manifest |
+| 单项修订 | 各资产独立rNNN；剧情依据用story_snapshot；契约版本与美术Revision分开 |
+| 修改/新增 | 同用途通常保持名称及注册标识，只递增Revision；共存/不同用途提请开发确认 |
+| 不确定 | 文稿与参考准备照常，登记待确认项；未确认不得标运行时发布完成 |
+
+正式美术资源命名不改变Codex必要的SKILL.md及连字符技能标识。所有图片/视频/音频/3D规格与来源信息见命名规则及节点模板。日期只写交付信息，不作为资产修订号。
 
 ## 七、单个故事节点所需资产清单
 
 | 资产 | 数量/条件 | 来源 | 本阶段交付 |
 |---|---|---|---|
-| 脚本＋世界/图册引用 | 1个节点及相关规则 | SOP1 | 固定revision与实体版本 |
+| 脚本＋世界/图册引用 | 1个节点及相关规则 | SOP1 | 固定剧情快照与实体rNNN |
 | 实际关键帧 | 覆盖全部生成任务；通常2–6张 | SOP2 | 路径/哈希/输入编号 |
 | 母图/空间图 | 每个实际涉及实体与地点1套 | SOP1 | 与关键帧并用；按模型上限选择 |
 | 生成任务包 | 每个原片任务1份 | 本阶段 | 合法参数、prompt、预算、材料映射 |
@@ -129,3 +138,17 @@ ffmpeg -v error -i "INPUT.mp4" -map 0:v:0 -map 0:a? -f null -
 | QA与任务来源 | 每节点各1份 | 本阶段 | 技术测量、视觉/听觉结论、费用状态 |
 
 见 [节点资产模板](node-assets.json)。交付可复用资产，不默认额外制作长片、预告片或多个分辨率版本。
+
+### 本节点交付登记补充
+
+每项实际资产登记asset_name、用途、独立rNNN、新增/修改、source/runtime/preview/reference/history、依赖、软件版本、媒介规格与来源授权。developer_registration缺失时保持pending；内部节点和镜头引用不是正式Asset ID。设定/关键帧默认reference，成片先history，开发确认后才提供稳定runtime导出。
+
+### 命名失败与返工
+
+| 问题 | 处理 | 重验 |
+|---|---|---|
+| 大写/连字符/中文或临时版本词 | 生成命名提案，不擅自改已注册名称 | 路径引用和重名检查 |
+| runtime带修订号、混入源文件 | 历史移入制作包history，稳定导出候选交开发确认；不移动真实游戏目录 | source/runtime/preview边界 |
+| 清单误当Manifest或自行分配ID | 改为delivery制作记录；未知开发字段置pending/null | 开发确认记录 |
+| 同用途返修误建新资产 | 保留已确认名称/Key/Path，增加该资产rNNN | 对比上次正式交付 |
+| 缺少来源/规格/依赖 | 补充可验证信息，未知不能写通过 | 逐项交付信息 |

@@ -3,19 +3,19 @@
 ![本阶段图文流程](illustrated.png)
 
 
-手册版本v1.1。节点与ID继承SOP1；不要为同一角色或节点另建不兼容编号。
+手册版本1.3。节点与ID继承SOP1；不要为同一角色或节点另建不兼容编号。
 
 ## 一、逐步操作：工具、输入、输出、参数与放行
 
 | 步骤 | 使用工具 | 输入格式 | 操作与参数/模板 | 输出格式 | 合格标准 |
 |---|---|---|---|---|---|
-| 1 接收与校验 | Codex文件读取、JSON检查；仓库校验器可选 | 三份MD、designs PNG/JPG、handoff.json | 核对project_id/revision与每镜实体引用 | `qa/image-input-check.md` | 必需母图真实存在且passed；缺图列具体ID |
-| 2 检查生图路线 | 宿主imagegen工具发现；或Image2技能与CLI帮助 | 用户指定路线、参考能力要求、授权范围 | 检查是否支持编辑/多参考、实际参数、输出路径；不打印密钥 | `qa/image-provider.md` | 所选路线可用；服务商与预算明确；不自动切换 |
-| 3 编制节点生产矩阵 | Codex编剧/美术拆解、JSON/CSV编辑 | 脚本镜头、实体母图、地点布局 | 模板P；逐镜分配首/动作/证据/末态所需图片 | `image_plan.json`或CSV；逐图TXT | 每个keyframe_id有用途；同组非无意义重复 |
+| 1 接收与校验 | Codex文件读取、JSON检查；仓库校验器可选 | 三份MD、designs PNG/JPG、handoff.json | 核对project_id/revision与每镜实体引用 | `qa/image_input_check.md` | 必需母图真实存在且passed；缺图列具体ID |
+| 2 检查生图路线 | 宿主imagegen工具发现；或Image2技能与CLI帮助 | 用户指定路线、参考能力要求、授权范围 | 检查是否支持编辑/多参考、实际参数、输出路径；不打印密钥 | `qa/image_provider.md` | 所选路线可用；服务商与预算明确；不自动切换 |
+| 3 编制节点生产矩阵 | Codex编剧/美术拆解、JSON/CSV编辑 | 脚本镜头、实体母图、地点布局 | 模板P；逐镜分配首/动作/证据/末态所需图片 | `image_plan.json`或CSV；逐图TXT | 每个keyframe_ref有用途；同组非无意义重复 |
 | 4 生成代表帧 | imagegen或已配置Image2；图片查看 | 完整提示词、实际参考图 | 模板I；先关键建立帧，按参数表合法映射 | 1张实际PNG/JPG及回执JSON | 人物/物件/地点一致，构图支持后续动作 |
-| 5 派生连续帧 | 同一路线生图/编辑工具 | 母图＋通过代表帧＋对应动作指令 | 模板I/E；每次只改变所需机位或状态 | `images/*.png`、完整prompt、task记录 | 首中末变化有因果，固定几何不漂移 |
-| 6 像素与连续性验收 | 图片查看；Pillow或等效尺寸/接触表工具 | 单张原图、母图、相邻帧 | 按下列视觉检查表核对；失败局部编辑 | `qa/image-review.md`、接触表 | 每张被检查；关键证据可读；没有假字幕/UI/边框 |
-| 7 交接 | Codex JSON编辑、SHA256、文件存在检查 | 通过图、上游三文档与图册 | 登记实际尺寸、来源版本、工具返回模型信息 | `image_manifest.json`＋实际图片 | 所有必需关键帧为passed；无失效引用；未确认项显式列出 |
+| 5 派生连续帧 | 同一路线生图/编辑工具 | 母图＋通过代表帧＋对应动作指令 | 模板I/E；每次只改变所需机位或状态 | `reference/*.png`、完整prompt、task记录 | 首中末变化有因果，固定几何不漂移 |
+| 6 像素与连续性验收 | 图片查看；Pillow或等效尺寸/接触表工具 | 单张原图、母图、相邻帧 | 按下列视觉检查表核对；失败局部编辑 | `qa/image_review.md`、接触表 | 每张被检查；关键证据可读；没有假字幕/UI/边框 |
+| 7 交接 | Codex JSON编辑、SHA256、文件存在检查 | 通过图、上游三文档与图册 | 登记实际尺寸、来源版本、工具返回模型信息 | `image_delivery.json`＋实际图片 | 所有必需关键帧为passed；无失效引用；未确认项显式列出 |
 
 ## 二、输入输出格式与参数
 
@@ -24,7 +24,7 @@ JSON遵循 [交接契约](handoff-contract.md)。图像原件PNG优先或高质�
 以下是规范化制作字段，**不是可直接提交的API请求**：
 
 ```json
-{"keyframe_id":"KF-001-01-A","shot_id":"SH-001-01","frame_role":"start","aspect_ratio":"16:9","target_long_edge_px":1920,"provider":"host-imagegen","model":"not_reported","reference_files":[],"reference_roles":[],"seed":null,"prompt_file":"prompts/atl_KF-001-01-A_v001.txt","output_path":"images/atl_SEG-001_SH-001-01_start_v001.png","status":"planned"}
+{"keyframe_ref":"frame_01","shot_ref":"shot_01","frame_role":"start","aspect_ratio":"16:9","target_long_edge_px":1920,"provider":"host-imagegen","model":"not_reported","reference_files":[],"reference_roles":[],"seed":null,"prompt_file":"source/ch01_signal03_sh01_source_r001.txt","output_path":"reference/ch01_signal03_sh01_preview_r001.png","status":"planned"}
 ```
 
 | 参数 | 建议默认值 | 必须注意 |
@@ -44,8 +44,8 @@ JSON遵循 [交接契约](handoff-contract.md)。图像原件PNG优先或高质�
 ### P 节点图像生产矩阵
 
 ```text
-读取{script_revision}的{segment_id}，按每镜动作拆成图像生成任务。
-对每张列出：keyframe_id、用途、shot_ids、entity_ids、实际参考路径及角色、构图、首末状态、尺寸、下一步动态。
+读取{story_snapshot}的{node_ref}，按每镜动作拆成图像生成任务。
+对每张列出：keyframe_ref、用途、shot_refs、entity_refs、实际参考路径及角色、构图、首末状态、尺寸、下一步动态。
 每张承担不同叙事职责；保留{world_features}，禁止提前揭露{later_information}。
 仅规划本节点必需图像，不自动扩展数量。
 ```
@@ -53,8 +53,8 @@ JSON遵循 [交接契约](handoff-contract.md)。图像原件PNG优先或高质�
 ### I 首帧/连续帧生成
 
 ```text
-生成{segment_id}/{shot_id}/{keyframe_id}，用途是{frame_role}。
-输入参考1用于{entity_id固定身份}；参考2用于{location空间}；参考3用于{相邻帧连续状态}。
+生成{node_ref}/{shot_ref}/{keyframe_ref}，用途是{frame_role}。
+输入参考1用于{entity_ref固定身份}；参考2用于{location空间}；参考3用于{相邻帧连续状态}。
 保持{locked_features}；当前{era}，摄影机由{camera_owner}在{position}朝{direction}拍摄。
 画面开始状态{start_state}，主体{姿态/持物}，环境{天气/照明/状态}。
 必须清晰呈现{evidence}，为下一动作{next_motion}保留{movement_space}。
@@ -87,14 +87,23 @@ JSON遵循 [交接契约](handoff-contract.md)。图像原件PNG优先或高质�
 | 任务超时/下载损坏 | 尚无终态或文件无法解码 | 先查原任务/重下载同资源，确认失败再按预算重试 | 文件完整性，避免重复扣费 |
 ## 六、文件命名与版本规则
 
-- project_id 使用短英文文明码，如 `atl`；故事节点 `SEG-001`，镜头 `SH-001-01`，关键帧 `KF-001-01-A`。ID一经分配不因返修改变，删除的ID不复用。
-- 全局实体 `GLOBAL-TRAVELLER` / `GLOBAL-CRAFT`；文明实体 `ATL-CHAR-001` / `ATL-PROP-001` / `ATL-LOC-001`。只在实际出镜或参与因果时纳入节点资产。
-- 文件模式：`{project_id}_{entity_or_segment_id}_{role}_v{NNN}.{ext}`。例如 `atl_ATL-LOC-001_layout_v001.png`、`atl_SEG-001_SH-001-01_start_v002.png`、`atl_SEG-001_final_v003.mp4`。使用ASCII文件名便于跨平台命令，中文解释写在清单中。
-- 世界/脚本/图册及清单保留契约固定入口名，例如 `01_world.md`、`handoff.json`；每次正式修订前将旧文件归入 `revisions/r001/`，新入口指向同一份最新有效内容。文档首部写 project_id、revision、updated_at、status、变更说明。
-- `revision` 是整套制作的契约修订号（示例 `r1`→`r2`）；`v001` 是某项资产的迭代号。只修某帧构图但不改变世界/身份/剧情时提升文件v号并更新清单，不必重写全部世界设定。改变人物身份、地点拓扑或剧情事实时提升revision，并逐项标记受影响下游 `stale`。
-- 保留原始文件，失败版登记failed原因，合格版本登记passed与SHA256。不要使用“最终版2_最终确认版”等模糊命名，不以最新修改时间自动选取版本。
-- 所有引用是production根目录相对路径。日期采用ISO格式，文本UTF-8。缓存、下载、中间文件与交付均服从使用者指定根目录；外部工具若无法指定落盘位置，先明确限制，不静默违反路径规则。
-- 开源仓库版本与制作revision分开：本次手册为v1.1，不能把仓库v1.1误当某文明资产revision。
+本阶段按 [美术命名与交付规则](art_naming.md) 执行，覆盖此前的组合编号文件名与v号约定。
+
+| 内容 | 本阶段执行规则 |
+|---|---|
+| 正式文件/目录 | 小写ASCII＋数字＋下划线；snake_case；小写扩展名 |
+| 文件结构 | `<asset_name>[_<variant>]_<role>[_rNNN].<ext>`；无意义的main及不存在的variant省略 |
+| 历史/源文件 | r001起，三位递增；如`history/ch01_signal03_r002.mp4`；不覆盖旧历史 |
+| 运行时文件 | 如`runtime/ch01_signal03.mp4`，通常不带修订号；名称/路径由开发确认 |
+| 设定/关键帧 | 如`reference/traveller_preview_r001.png`；仅制作参考，不自动进入运行时 |
+| 角色词 | 使用source/preview/thumbnail/albedo/normal等已有词；新的角色先与开发确认 |
+| 开发登记 | Asset ID、Asset Key、Runtime Path及Manifest由开发管理，未知为null/pending |
+| 制作清单 | handoff.json、image_delivery.json、video_delivery.json；不是开发Manifest |
+| 单项修订 | 各资产独立rNNN；剧情依据用story_snapshot；契约版本与美术Revision分开 |
+| 修改/新增 | 同用途通常保持名称及注册标识，只递增Revision；共存/不同用途提请开发确认 |
+| 不确定 | 文稿与参考准备照常，登记待确认项；未确认不得标运行时发布完成 |
+
+正式美术资源命名不改变Codex必要的SKILL.md及连字符技能标识。所有图片/视频/音频/3D规格与来源信息见命名规则及节点模板。日期只写交付信息，不作为资产修订号。
 
 ## 七、单个故事节点所需资产清单
 
@@ -102,11 +111,25 @@ JSON遵循 [交接契约](handoff-contract.md)。图像原件PNG优先或高质�
 |---|---|---|---|
 | 节点脚本与世界规则 | 各1份引用 | SOP1 | 继承，不另造事实 |
 | 实体母图及地点布局 | 每个出镜实体1套 | SOP1 | 带版本/路径；跨节点共享不再生成 |
-| 建立/动作/证据关键帧 | 默认3张，最终以脚本镜头覆盖为准 | 本阶段生成 | PNG/JPG实图，各有稳定ID |
+| 建立/动作/证据关键帧 | 默认3张，最终以脚本镜头覆盖为准 | 本阶段生成 | PNG/JPG实图，各有内部制作引用 |
 | 首末帧 | 按视频后端输入要求与动作复杂度 | 可与上行重合，不重复计数 | 若后端不接受末帧，保留为验收目标 |
 | 每图提示词及参考映射 | 每图1份 | 本阶段 | TXT＋JSON，记录实际送入的参考 |
 | 生成回执 | 每个提交1份 | 工具 | 任务ID、返回状态、实测尺寸；私密字段不发布 |
 | 节点接触表与QA | 各1份 | 检查产物 | 所有帧与母图对照、问题与返修版本 |
-| 图像交接清单 | 1份更新 | 本阶段 | 所需keyframe_id全覆盖且passed |
+| 图像交接清单 | 1份更新 | 本阶段 | 所需keyframe_ref全覆盖且passed |
 
 见 [节点资产模板](node-assets.json)。数量采用去重后的文件ID统计，不能把同一图同时当首帧和证据图而重复算生成张数。
+
+### 本节点交付登记补充
+
+每项实际资产登记asset_name、用途、独立rNNN、新增/修改、source/runtime/preview/reference/history、依赖、软件版本、媒介规格与来源授权。developer_registration缺失时保持pending；内部节点和镜头引用不是正式Asset ID。设定/关键帧默认reference，成片先history，开发确认后才提供稳定runtime导出。
+
+### 命名失败与返工
+
+| 问题 | 处理 | 重验 |
+|---|---|---|
+| 大写/连字符/中文或临时版本词 | 生成命名提案，不擅自改已注册名称 | 路径引用和重名检查 |
+| runtime带修订号、混入源文件 | 历史移入制作包history，稳定导出候选交开发确认；不移动真实游戏目录 | source/runtime/preview边界 |
+| 清单误当Manifest或自行分配ID | 改为delivery制作记录；未知开发字段置pending/null | 开发确认记录 |
+| 同用途返修误建新资产 | 保留已确认名称/Key/Path，增加该资产rNNN | 对比上次正式交付 |
+| 缺少来源/规格/依赖 | 补充可验证信息，未知不能写通过 | 逐项交付信息 |

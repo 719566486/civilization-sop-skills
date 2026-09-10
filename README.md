@@ -1,5 +1,9 @@
 # Civilization SOP Skills · 文明资产制作三部曲
 
+> **命名规范更新（2026-09-10）**：已对齐《美术资产命名与交付规范》V1。正式美术文件采用snake_case，源文件/历史交付用rNNN，运行时文件保持稳定名称。开发负责Asset ID、Asset Key、最终运行时路径及Manifest。交接契约升级为2.0；旧数据请先迁移。
+
+[命名与交付规则](docs/art_naming.md) · [新旧规则对照](docs/naming_migration.md)
+
 一句文明想法 → 世界观、Traveller 探索脚本、真实设定图册 → 剧情图像 → 每条 15–20 秒视频资产。
 
 ![三个SOP流程图](docs/workflow.png)
@@ -30,10 +34,10 @@
 | 2 图像资产生产 | `$civilization-image-assets` | SOP 1三份交付及实际设定图 | 连续剧情图、视频关键帧、对应清单 |
 | 3 视频资产生产 | `$civilization-video-assets` | 脚本、设定图、SOP 2图片 | 每条15–20秒MP4、来源与验收记录 |
 
-SOP 1 的设定图锁定“长什么样”；SOP 2 的剧情帧描述“正在发生什么”。人物、道具、场景均建立稳定ID，跨文明母资产可复用，每个文明的新实体单独设计。输出目录由使用者指定，不依赖作者电脑路径。
+SOP 1 的设定图锁定“长什么样”；SOP 2 的剧情帧描述“正在发生什么”。人物、道具、场景均以内部制作引用关联；正式Asset ID由开发分配。跨文明母资产可复用，每个文明的新实体单独设计。输出目录由使用者指定，不依赖作者电脑路径。
 
 
-## v1.1 逐步操作手册
+## 逐步操作手册 1.3
 
 每份手册都覆盖七项：逐步工具、输入输出、参数与提示词、验收标准、失败返工、文件命名版本、单节点资产清单。
 
@@ -87,9 +91,11 @@ $civilization-video-assets 读取该目录的脚本、图册和关键帧，先�
 ```text
 python scripts/validate_bundle.py
 python scripts/validate_bundle.py --production 你的制作目录
+python scripts/validate_bundle.py --production 你的制作目录 --previous 上次交付目录
+python scripts/test_naming.py --workdir 你指定的测试目录
 ```
 
-前一命令验证包结构、示例ID引用与时间表；后一命令还检查真实交接文件，拒绝缺少必要媒体的 passed 状态。它不代替看图、观看视频、试听和完整解码。
+包检查覆盖目录和示例制作引用；--production检查交付命名、媒体和开发登记边界；--previous对照上次交付的修订及稳定路径；test_naming.py运行离线回归测试。它们不代替看图、观看视频、试听和完整解码。
 
 可将本目录整体上传到自己的 GitHub 仓库。提供 MIT LICENSE；许可仅涵盖本仓库原创流程、模板、示例和脚本，不包含原项目IP、美术资产、外部工具或第三方生成服务权利。未附原项目媒体、账户信息、临时签名URL或供应商技能全文。
 

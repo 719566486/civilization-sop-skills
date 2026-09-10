@@ -1,92 +1,144 @@
 {
-  "template_version": "1.1",
-  "project_id": "atl",
-  "revision": "r1",
-  "segment_id": "SEG-001",
+  "template_version": "2.0",
+  "project_id": "atlantis_demo",
+  "story_snapshot": "story_001",
+  "node_ref": "node_01",
   "target_duration_s": 18,
   "stage": 3,
   "status": "planned",
-  "note": "这是可填模板。null路径不代表资产已生成；按实际出镜与声音需求调整数量和required。",
+  "delivery_status": "draft",
+  "note": "制作引用不替代开发Asset ID；以下数量按实际出镜调整；规划字段不是完成交付。",
   "assets": [
     {
       "type": "upstream_script_and_atlas",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": true,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
       "type": "passed_keyframes",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": true,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
       "type": "entity_design_refs",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": true,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
       "type": "generation_plan",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": false,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
       "type": "raw_clips",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": false,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
-      "type": "final_video",
+      "type": "runtime_video_candidate",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": false,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
       "type": "audio_if_requested",
       "required": false,
-      "asset_ids": [],
       "files": [],
       "reuse": false,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
       "type": "subtitles_if_requested",
       "required": false,
-      "asset_ids": [],
       "files": [],
       "reuse": false,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
       "type": "video_qa",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": false,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     },
     {
-      "type": "video_manifest",
+      "type": "video_delivery",
       "required": true,
-      "asset_ids": [],
       "files": [],
       "reuse": false,
-      "status": "planned"
+      "status": "planned",
+      "production_refs": []
     }
-  ]
+  ],
+  "asset_record_template": {
+    "production_ref": "clip_01",
+    "asset_name": "ch01_signal03",
+    "name_status": "proposed",
+    "revision": "r001",
+    "change_type": "new",
+    "purpose": "制作参考或待开发确认的剧情资产",
+    "runtime_export_format": "mp4",
+    "proposed_runtime_filename": null,
+    "files": {
+      "source": [],
+      "runtime": [],
+      "preview": [],
+      "reference": [],
+      "history": []
+    },
+    "dependencies": [],
+    "software": [
+      {
+        "name": "unknown",
+        "version": "unknown"
+      }
+    ],
+    "provenance": {
+      "category": "ai_generated",
+      "source": "pending_generation",
+      "license_scope": "unknown",
+      "evidence": []
+    },
+    "specifications": {
+      "width": null,
+      "height": null,
+      "duration_s": null,
+      "fps": null,
+      "codec": "unknown",
+      "has_audio": null
+    },
+    "source_availability": {
+      "status": "not_available",
+      "reason": "规划示例，尚未生成"
+    },
+    "developer_registration": {
+      "status": "pending",
+      "asset_id": null,
+      "asset_key": null,
+      "runtime_path": null,
+      "confirmation": null
+    },
+    "status": "planned",
+    "qa": {}
+  }
 }

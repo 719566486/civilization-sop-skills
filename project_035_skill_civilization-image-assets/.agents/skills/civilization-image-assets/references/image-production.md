@@ -13,7 +13,7 @@
 
 可复制模板：
 
-“生成 {segment}/{shot} 的 {frame_role}。参考1锁定{entity_id}的{固定特征}；参考2锁定{location_id}的{空间结构}。当前是{era}，{start_state}。镜头由{camera_owner}持有，位于{position}，朝{direction}。主体{可被执行的姿态}，为随后{action}保留空间。{文明材料/光照}。必须保留{证据}；禁止{本镜风险}。输出{比例}的满幅画面。”
+“生成 {segment}/{shot} 的 {frame_role}。参考1锁定{entity_ref}的{固定特征}；参考2锁定{location_id}的{空间结构}。当前是{era}，{start_state}。镜头由{camera_owner}持有，位于{position}，朝{direction}。主体{可被执行的姿态}，为随后{action}保留空间。{文明材料/光照}。必须保留{证据}；禁止{本镜风险}。输出{比例}的满幅画面。”
 
 若工具只接受较少参考，选择与当前镜头最相关的母图；不要声称所有参考都已注入。不支持首尾帧的视频后端仍可将末帧用作验收目标，但必须标明没有作为端点控制输入。
 

@@ -1,0 +1,71 @@
+{
+  "schema_version": "2.0",
+  "project_id": "atlantis_demo",
+  "story_snapshot": "story_001",
+  "status": "planned",
+  "delivery_status": "draft",
+  "videos": [
+    {
+      "production_ref": "clip_01",
+      "asset_name": "ch01_signal03",
+      "name_status": "proposed",
+      "revision": "r001",
+      "change_type": "new",
+      "purpose": "制作参考或待开发确认的剧情资产",
+      "runtime_export_format": "mp4",
+      "proposed_runtime_filename": null,
+      "files": {
+        "source": [],
+        "runtime": [],
+        "preview": [],
+        "reference": [],
+        "history": []
+      },
+      "dependencies": [],
+      "software": [
+        {
+          "name": "unknown",
+          "version": "unknown"
+        }
+      ],
+      "provenance": {
+        "category": "ai_generated",
+        "source": "pending_generation",
+        "license_scope": "unknown",
+        "evidence": []
+      },
+      "specifications": {
+        "width": null,
+        "height": null,
+        "duration_s": null,
+        "fps": null,
+        "codec": "unknown",
+        "has_audio": null
+      },
+      "source_availability": {
+        "status": "not_available",
+        "reason": "规划示例，尚未生成"
+      },
+      "developer_registration": {
+        "status": "pending",
+        "asset_id": null,
+        "asset_key": null,
+        "runtime_path": null,
+        "confirmation": null
+      },
+      "status": "planned",
+      "qa": {},
+      "node_ref": "node_01",
+      "keyframe_refs": [
+        "frame_01",
+        "frame_02",
+        "frame_03"
+      ],
+      "path": null,
+      "provider": null,
+      "model": null,
+      "source_files": [],
+      "audio_specifications": []
+    }
+  ]
+}

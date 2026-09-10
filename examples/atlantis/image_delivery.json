@@ -4,15 +4,10 @@
   "story_snapshot": "story_001",
   "status": "planned",
   "delivery_status": "draft",
-  "documents": {
-    "world": "01_world.md",
-    "story": "02_story.md",
-    "atlas": "03_design_atlas.md"
-  },
-  "entities": [
+  "images": [
     {
-      "production_ref": "traveller",
-      "asset_name": "traveller",
+      "production_ref": "frame_01",
+      "asset_name": "ch01_signal03_sh01",
       "name_status": "proposed",
       "revision": "r001",
       "change_type": "new",
@@ -60,16 +55,23 @@
       },
       "status": "planned",
       "qa": {},
-      "kind": "character",
-      "scope": "global",
-      "locked_features": [
-        "由使用者提供既有母图后锁定"
+      "shot_refs": [
+        "shot_01"
       ],
-      "design_files": []
+      "entity_refs": [
+        "traveller",
+        "water_gate",
+        "pressure_valve"
+      ],
+      "reference_files": [],
+      "path": null,
+      "prompt": "西入口观察，使用已确认参考",
+      "provider": null,
+      "model": null
     },
     {
-      "production_ref": "water_gate",
-      "asset_name": "water_gate",
+      "production_ref": "frame_02",
+      "asset_name": "ch01_signal03_sh02",
       "name_status": "proposed",
       "revision": "r001",
       "change_type": "new",
@@ -117,16 +119,23 @@
       },
       "status": "planned",
       "qa": {},
-      "kind": "location",
-      "scope": "civilization",
-      "locked_features": [
-        "西入口、北阀门、东通道"
+      "shot_refs": [
+        "shot_02"
       ],
-      "design_files": []
+      "entity_refs": [
+        "traveller",
+        "water_gate",
+        "pressure_valve"
+      ],
+      "reference_files": [],
+      "path": null,
+      "prompt": "检查反向磨损，使用已确认参考",
+      "provider": null,
+      "model": null
     },
     {
-      "production_ref": "pressure_valve",
-      "asset_name": "pressure_valve",
+      "production_ref": "frame_03",
+      "asset_name": "ch01_signal03_sh03",
       "name_status": "proposed",
       "revision": "r001",
       "change_type": "new",
@@ -174,75 +183,19 @@
       },
       "status": "planned",
       "qa": {},
-      "kind": "prop",
-      "scope": "civilization",
-      "locked_features": [
-        "三联结构、背面反向磨损"
+      "shot_refs": [
+        "shot_03"
       ],
-      "design_files": []
-    }
-  ],
-  "nodes": [
-    {
-      "production_ref": "node_01",
-      "duration_s": 18,
-      "story_anchor": "node_01 旧引水闸",
-      "shots": [
-        {
-          "start_s": 0,
-          "end_s": 5,
-          "action": "西入口观察",
-          "start_state": "西入口持机",
-          "end_state": "阀门已定位",
-          "pov": "Traveller手持",
-          "era": "当前",
-          "production_ref": "shot_01",
-          "entity_refs": [
-            "traveller",
-            "water_gate",
-            "pressure_valve"
-          ],
-          "keyframe_refs": [
-            "frame_01"
-          ]
-        },
-        {
-          "start_s": 5,
-          "end_s": 13,
-          "action": "检查反向磨损",
-          "start_state": "阀门已定位",
-          "end_state": "手停在磨损处",
-          "pov": "Traveller手持",
-          "era": "当前",
-          "production_ref": "shot_02",
-          "entity_refs": [
-            "traveller",
-            "water_gate",
-            "pressure_valve"
-          ],
-          "keyframe_refs": [
-            "frame_02"
-          ]
-        },
-        {
-          "start_s": 13,
-          "end_s": 18,
-          "action": "转向东通道",
-          "start_state": "手停在磨损处",
-          "end_state": "朝东通道稳定",
-          "pov": "Traveller手持",
-          "era": "当前",
-          "production_ref": "shot_03",
-          "entity_refs": [
-            "traveller",
-            "water_gate",
-            "pressure_valve"
-          ],
-          "keyframe_refs": [
-            "frame_03"
-          ]
-        }
-      ]
+      "entity_refs": [
+        "traveller",
+        "water_gate",
+        "pressure_valve"
+      ],
+      "reference_files": [],
+      "path": null,
+      "prompt": "转向东通道，使用已确认参考",
+      "provider": null,
+      "model": null
     }
   ]
 }
